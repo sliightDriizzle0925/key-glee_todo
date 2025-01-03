@@ -2,3 +2,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form-input-group {
+  margin-bottom: 15px;
+}
+body {
+  background-color: #f2f5f5;
+}
+.Tile {
+  background-color: #b5b3ae;
+}
+.tileBtn {
+  padding: 8px;
+  background-color: #4657f0;
+  color: white;
+  border-radius: 8px;
+}
+.tileBtn:hover {
+  background-color: #7782e6;
+  color: black;
+}

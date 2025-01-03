@@ -19,11 +19,29 @@ func (tr *TodoRepository) Search(search *model.TodoSearchParams) ([]*model.Todo,
 	if search.ID != nil {
 		query = query.Where("id = ?", *search.ID)
 	}
-	if search.DisplayName != nil {
-		query = query.Where("display_name = ?", *search.DisplayName)
+	if search.PartCategory != nil {
+		query = query.Where("part_category = ?", *search.PartCategory)
 	}
-	if search.DueBy != nil {
-		query = query.Where("due_by = ?", *search.DueBy)
+	if search.PartName != nil {
+		query = query.Where("part_name = ?", *search.PartName)
+	}
+	if search.Brand != nil {
+		query = query.Where("brand = ?", *search.Brand)
+	}
+	if search.Name != nil {
+	query = query.Where("name = ?", *search.Name)
+	}
+	if search.NumOfSticks != nil {
+	query = query.Where("num_of_sticks = ?", *search.NumOfSticks)
+	}
+	if search.StickCapacity != nil {
+	query = query.Where("stick_capacity = ?", *search.StickCapacity)
+	}
+	if search.Capacity != nil {
+	query = query.Where("capacity = ?", *search.Capacity)
+	}
+	if search.PartType != nil {
+	query = query.Where("part_type = ?", *search.PartType)
 	}
 
 	result := query.Find(&todos)

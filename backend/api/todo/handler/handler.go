@@ -1,8 +1,6 @@
 package handler
 
 import (
-	"time"
-
 	"github.com/keyglee/assessment/lib/database"
 	"github.com/keyglee/assessment/lib/logger"
 	"github.com/keyglee/assessment/lib/todo/model"
@@ -29,15 +27,6 @@ func initializeDBForInterview(db *gorm.DB) {
 		return
 	}
 
-	repo.Create(&model.Todo{
-		DisplayName: "Buy Milk",
-		DueBy:       time.Date(2024, time.December, 15, 23, 59, 59, 0, time.UTC),
-	})
-
-	repo.Create(&model.Todo{
-		DisplayName: "Call the Water Company",
-		DueBy:       time.Date(2025, time.December, 31, 23, 59, 59, 0, time.UTC),
-	})
 }
 
 func NewHandler() *Handler {

@@ -1,20 +1,40 @@
 package model
 
-import "time"
-
 type TodoSearchParams struct {
-	ID          *uint      `json:"id"`
-	DisplayName *string    `json:"display_name"`
-	DueBy       *time.Time `json:"due_by"`
+	ID             *uint   `query:"id"`
+	PartCategory  *string `query:"part_category"`
+	PartType      *string `query:"part_type"`
+	PartName	  *string `query:"part_name"`
+	Brand         *string `query:"brand"`
+	Name          *string `query:"name"`
+	NumOfSticks   *string `query:"num_of_sticks"`
+	StickCapacity *string `query:"stick_capacity"`
+	Capacity      *string `query:"capacity"`
+	
 }
 
 type Todo struct {
-	ID          uint      `json:"id"`
-	DisplayName string    `json:"display_name"`
-	DueBy       time.Time `json:"due_by"`
+	ID            uint   `query:"id"`
+	PartCategory  string `query:"part_category"`
+	PartType      string `query:"part_type"`
+	PartName	  string `query:"part_name"`
+	Brand         string `query:"brand"`
+	Name          string `query:"name"`
+	NumOfSticks   string `query:"num_of_sticks"`
+	StickCapacity string `query:"stick_capacity"`
+	Capacity      string `query:"capacity"`
+	
 }
 
 type UpdateTodo struct {
-	DisplayName *string    `json:"display_name"`
-	DueBy       *time.Time `json:"due_by"`
+	ID            *uint   `query:"id"`
+	PartCategory  *string `query:"part_category"`
+	PartType      *string `query:"part_type"`
+	PartName	  *string `query:"part_name"`
+	Brand         *string `query:"brand"`
+	Name          *string `query:"name"`
+	NumOfSticks   *string `query:"num_of_sticks"`
+	StickCapacity *string `query:"stick_capacity"`
+	Capacity      *string `query:"capacity"`
+	
 }

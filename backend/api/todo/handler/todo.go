@@ -32,9 +32,16 @@ func (h *Handler) GetTodo(c echo.Context) error {
 }
 
 type SearchTodosRequest struct {
-	ID          *uint   `query:"id"`
-	DisplayName *string `query:"display_name"`
-	DueBy       *string `query:"due_by"`
+	ID            *uint   `query:"id"`
+	PartCategory  *string `query:"part_category"`
+	PartType      *string `query:"part_type"`
+	PartName	  *string `query:"part_name"`
+	Brand         *string `query:"brand"`
+	Name          *string `query:"name"`
+	NumOfSticks   *string `query:"num_of_sticks"`
+	StickCapacity *string `query:"stick_capacity"`
+	Capacity      *string `query:"capacity"`
+	
 }
 
 func (h *Handler) SearchTodos(c echo.Context) error {
@@ -44,16 +51,16 @@ func (h *Handler) SearchTodos(c echo.Context) error {
 	}
 
 	search := &model.TodoSearchParams{
-		ID:          req.ID,
-		DisplayName: req.DisplayName,
-	}
-
-	if req.DueBy != nil {
-		parsedDueBy, err := h.parseDate(*req.DueBy)
-		if err != nil {
-			return c.JSON(400, "Invalid date format. Please use ISO 8601 format.")
-		}
-		search.DueBy = &parsedDueBy
+		ID:             req.ID,
+		PartCategory:   req.PartCategory,
+		PartType:       req.PartType,
+		PartName:       req.PartName,
+		Brand:          req.Brand,
+		Name:           req.Name,
+		NumOfSticks:    req.NumOfSticks,
+		StickCapacity:  req.StickCapacity,
+		Capacity:       req.Capacity,
+		
 	}
 
 	todos, err := h.TodoRepository.Search(search)
@@ -67,8 +74,14 @@ func (h *Handler) SearchTodos(c echo.Context) error {
 }
 
 type CreateTodoRequest struct {
-	DisplayName string  `json:"display_name"`
-	DueBy       *string `json:"due_by"`
+	PartCategory  string `query:"part_category"`
+	PartType      string `query:"part_type"`
+	PartName	  string `query:"part_name"`
+	Brand         string `query:"brand"`
+	Name          string `query:"name"`
+	NumOfSticks   string `query:"num_of_sticks"`
+	StickCapacity string `query:"stick_capacity"`
+	Capacity      string `query:"capacity"`
 }
 
 func (h *Handler) CreateTodo(c echo.Context) error {
@@ -79,15 +92,14 @@ func (h *Handler) CreateTodo(c echo.Context) error {
 	}
 
 	todo := &model.Todo{
-		DisplayName: req.DisplayName,
-	}
-
-	if req.DueBy != nil {
-		parsedDueBy, err := h.parseDate(*req.DueBy)
-		if err != nil {
-			return c.JSON(400, "Invalid date format. Please use ISO 8601 format.")
-		}
-		todo.DueBy = parsedDueBy
+		PartCategory: req.PartCategory,
+		PartType: req.PartType,
+		PartName: req.PartName,
+		Brand: req.Brand,
+		Name: req.Name,
+		NumOfSticks: req.NumOfSticks,
+		StickCapacity: req.StickCapacity,
+		Capacity: req.Capacity,
 	}
 
 	err := h.TodoRepository.Create(todo)
@@ -100,9 +112,15 @@ func (h *Handler) CreateTodo(c echo.Context) error {
 }
 
 type UpdateTodoRequest struct {
-	ID          uint    `param:"id"`
-	DisplayName *string `json:"display_name"`
-	DueBy       *string `json:"due_by"`
+	ID            uint   `query:"id"`
+	PartCategory  *string `query:"part_category"`
+	PartType      *string `query:"part_type"`
+	PartName	  *string `query:"part_name"`
+	Brand         *string `query:"brand"`
+	Name          *string `query:"name"`
+	NumOfSticks   *string `query:"num_of_sticks"`
+	StickCapacity *string `query:"stick_capacity"`
+	Capacity      *string `query:"capacity"`
 }
 
 func (h *Handler) UpdateTodo(c echo.Context) error {
@@ -113,15 +131,7 @@ func (h *Handler) UpdateTodo(c echo.Context) error {
 	}
 
 	update := &model.UpdateTodo{
-		DisplayName: req.DisplayName,
-	}
-
-	if req.DueBy != nil {
-		parsedDueBy, err := h.parseDate(*req.DueBy)
-		if err != nil {
-			return c.JSON(400, "Invalid date format. Please use ISO 8601 format.")
-		}
-		update.DueBy = &parsedDueBy
+		PartType: req.PartType,
 	}
 
 	existingTodo, err := h.TodoRepository.GetByID(req.ID)
