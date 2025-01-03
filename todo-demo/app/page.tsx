@@ -1,80 +1,30 @@
-export default function Home() {
+"use client";
+import { lusitana } from "./ui/fonts";
+// import Image from "next/image";
+import Link from "next/link";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
+
+export default function Page() {
   return (
-    <div className="h-screen w-screen flex-col space-y-6 p-6">
-      <div className="place-self-center space-y-3 w-1/2">
-        <h1 className="text-4xl font-bold">
-          Welcome to the Keyglee Frontend Interview Template!
-        </h1>
-        <p>
-          Feel free to alter or delete any of the code present in this
-          next.js/react app.
-        </p>
-        <p>
-          Alternatively you may use whatever frontend tools you feel more
-          comfortable with!
-        </p>
+    <main className="flex min-h-screen flex-col p-6">
+      <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
+        <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
+          <p
+            className={`${lusitana.className} text-xl text-gray-800 md:text-3xl md:leading-normal`}
+          >
+            <strong>Welcome to my PC building guide!</strong> <br />
+            This guide will go over which components are needed for a custom
+            built PC as well as the installation process.
+          </p>
+          <Link
+            href="/dashboard/order"
+            className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
+          >
+            <span>Let&apos;s get started! :)</span>{" "}
+            <ArrowRightIcon className="w-5 md:w-6" />
+          </Link>
+        </div>
       </div>
-
-      <div className="place-self-center space-y-3 w-1/2">
-        <h2 className="text-2xl font-bold">Assignment Details</h2>
-        <p>
-          Create a basic TODO app using the provided backend. You shouldn&apos;t
-          need to alter the backend, just worry about making the proper CRUD api
-          calls to it.
-        </p>
-        <p>
-          The backend and templated frontend are set up for being a simple TODO list app,
-          but feel free to come up with your own theme! Your frontend could say something like 
-          &ldquo;Shopping List&ldquo; and the frontend elements could reflect that theme! Have fun and be creative!
-        </p>
-        <h4>Goals</h4>
-        <ul>
-          <li>Functionality to read the current TODOs from the API</li>
-          <li>
-            Functionality to create new TODOs from the frontend to the API
-          </li>
-          <li>Show off your coding style!</li>
-        </ul>
-        <h4>Optional</h4>
-        <ul>
-          <li>Functionality to update existing TODOs</li>
-          <li>Functionality to delete existing TODOs</li>
-        </ul>
-        <p>
-          Try to limit yourself to no more than 2 hours. We really don&apos;t
-          want you spending all your free time working on this.
-        </p>
-        <h3 className="text-xl font-bold">The Frontend</h3>
-        <p>
-          The frontend provided is a starter for a react/next.js app. Feel free
-          to build off of this or totally remove everything in `todo-demo` to
-          make your own app using the tools of your choice.
-        </p>
-
-        <h4>Tools being used by the Starter Template</h4>
-        <ul>
-          <li>Next.js</li>
-          <li>React.js</li>
-          <li>Tailwindcss</li>
-          <li>Typescript</li>
-        </ul>
-        <p>
-          Tailwindcss is currently disabled via the globals.css file, feel free
-          to re-enable it.
-        </p>
-        <h3 className="text-xl font-bold">The Backend</h3>
-        <p>
-          The backend is a simple REST API that you can interact with via API
-          calls from your frontend. By default the backend&apos;s base url will
-          be `http://localhost:4000` with additional routes for the resource
-          type itself (for example: GET `http://localhost:4000/todos` will get
-          all todos).
-        </p>
-        <p>
-          Additional API routes and documentation is provided in the
-          repository&apos;s README.
-        </p>
-      </div>
-    </div>
+    </main>
   );
 }
